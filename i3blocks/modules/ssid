@@ -1,0 +1,3 @@
+#!/bin/bash
+
+awk '{print$4}' <<< test=$(nmcli device status | grep wlp2s0)

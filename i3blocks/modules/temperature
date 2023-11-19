@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# default values
+t_warn=70
+t_crit=90
+t_err=-9999
+
+# Get chip temperature
+temperature=$(cat /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input)
+
+echo "${temperature:0:2}°C"
+# Print color, if needed
+if [$temperature -qe $t_crit]
+then
+    echo "${temperature:0:2}°C too hot"
+fi
+

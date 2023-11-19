@@ -1,0 +1,12 @@
+#!/bin/bash
+
+memtotal=$(awk '/MemTotal/ {print$2}' /proc/meminfo)
+memavail=$(awk '/MemAvailable/ {print$2}' /proc/meminfo)
+gb=1000000
+
+memused="$((memtotal-memavail))"
+result="$(echo "${memused} / ${gb}" | bc -l)"
+memtotal_bc="$(echo "${memtotal} / ${gb}" | bc -l)"
+
+#printf "%.2f %s %.2f" $result "/" $memtotal_bc
+printf "%.2f / %.2f" $result $memtotal_bc
