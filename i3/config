@@ -47,13 +47,15 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Screen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight + 20 # increase screen brightness
 #bindsym XF86MonBrightnessDown exec xbacklight - 20 # decrease screen brightness
-#bindsym XF86MonBrightnessDown exec xrandr --output LVDS-1 --brightness 0.6
-#bindsym XF86MonBrightnessUp exec xrandr --output LVDS-1 --brightness 1
+bindsym XF86MonBrightnessDown exec xrandr --output LVDS-1 --brightness 0.6
+bindsym XF86MonBrightnessUp exec xrandr --output LVDS-1 --brightness 1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
-#font pango:DejaVu Sans Mono 8
+#font pango:monospace 10
+#font pango:Intel One Mono 10
+font pango: Poppins 11
+#font pango: Lato 11
 
 # Remove windows title
 #for_window [class="^.*"] border pixel 1
@@ -86,8 +88,12 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 #exec --no-startup-id nm-tray
 
+# xfce4-clipman (clipboard)
+exec --no-startup-id xfce4-clipman
+
 # Nextcloud client
-exec --no-startup-id flatpak run com.nextcloud.desktopclient.nextcloud
+#exec --no-startup-id flatpak run com.nextcloud.desktopclient.nextcloud
+exec --no-startup-id ~/AppImages/Nextcloud*
 #-------------------------------#
 
 #---- Windows config ----
@@ -106,7 +112,6 @@ bindsym $mod+Shift+q kill
 #-------------------------------#
 
 #---- Launchers ----#
-
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
 
@@ -255,6 +260,10 @@ bar {
         # i3blocks:
         status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
         workspace_buttons yes
-        font pango:DejaVu Sans Regular 10
+        # font pango:Intel One Mono 10
+        font pango: Poppins 10
+        # font pango: Lato 11
+        # font pango: mononoki 12
 }
 #-------------------------------#
+
